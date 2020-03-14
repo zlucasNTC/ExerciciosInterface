@@ -1,8 +1,10 @@
 package tela;
 
 import java.awt.Container;
+import java.awt.Insets;
 import java.text.ParseException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -15,7 +17,7 @@ import javax.swing.text.MaskFormatter;
 
 public class TelaCadastro extends JFrame {
 
-	String[] choices = { "" };
+	String[] choices = {""};
 	final JComboBox<String> cb = new JComboBox<String>(choices);
 
 	JLabel titulo, codCliente, nome, endereco, bairro, cidade, estado, celular, cep, sexo, tel, dataNasc, dataCad;
@@ -31,6 +33,8 @@ public class TelaCadastro extends JFrame {
 	MaskFormatter maskCep, maskCelular, maskTel, maskDataNasc, maskDataCad;
 
 	JFormattedTextField cepBox, celBox, telBox, dataNascBox, dataCadBox;
+	
+	ImageIcon iconincluir, iconlimpar, iconsair, iconconsultar, iconconstodos;
 
 	public TelaCadastro() {
 		super("Sistema de Controle de Produção Apícula");
@@ -43,11 +47,16 @@ public class TelaCadastro extends JFrame {
 			maskTel = new MaskFormatter("(##)####-####");
 			maskDataNasc = new MaskFormatter("##/##/####");
 			maskDataCad = new MaskFormatter("##/##/####");
-		} catch (ParseException ecxp) {
-		}
-
+		} catch (ParseException ecxp) {}
+        
+		iconincluir = new ImageIcon("incluir.png");
+		iconlimpar = new ImageIcon("limpar.png");
+		iconsair = new ImageIcon("sair.png");
+		iconconsultar = new ImageIcon("consultar.png");
+		iconconstodos = new ImageIcon("consultartodos.png");
+		
 		titulo = new JLabel("Cadastro de Cliente");
-
+        
 		codCliente = new JLabel("Código de Cliente");
 		nome = new JLabel("Nome completo");
 		endereco = new JLabel("Endereço");
@@ -84,13 +93,16 @@ public class TelaCadastro extends JFrame {
 		masc = new JRadioButton("Masculino", false);
 		fem = new JRadioButton("Feminino", false);
 
-		btnIncluir = new JButton("Incluir");
-		btnLimpar = new JButton("Limpar");
-		btnSair = new JButton("Sair");
-		btnConsultar = new JButton("Consultar");
-		btnConsultarTodos = new JButton("Consultar Todos");
+		btnIncluir = new JButton("Incluir", iconincluir);
+		btnLimpar = new JButton("Limpar", iconlimpar);
+		btnSair = new JButton("Sair", iconsair);
+		btnConsultar = new JButton("Consultar", iconconsultar);
+		btnConsultarTodos = new JButton("Consultar Todos", iconconstodos);
+		
+		btnConsultarTodos.setMargin(new Insets(1,1,1,1));
+		btnSair.setMargin(new Insets(1,1,1,8));
 
-		titulo.setBounds(155, 25, 120, 20);
+		titulo.setBounds(215, 25, 120, 20);
 		codCliente.setBounds(25, 70, 100, 20);
 		nome.setBounds(25, 100, 100, 20);
 		endereco.setBounds(25, 130, 100, 20);
